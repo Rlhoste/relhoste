@@ -13,12 +13,10 @@ app.use(bodyParser.json())
 app.use(morgan('short'))
 
 // Get all the users defined
-// app.get('/', function (req, res) {
-  // models.User.findAll()
-    // .then((users) => {
-      // res.json(users)
-    // })
-// })
+app.get('/', function (req, res) {
+  
+    res.send("hello world");
+})
 
 process.env.ENABLE_METRICS
 // Add a new user to the database
