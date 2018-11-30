@@ -2,8 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express()
-const models = require('./models/index');
-console.log("nalut");
+//const models = require('./models/index');
+ console.log("nalut");
 
 // Decode json and x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -13,25 +13,26 @@ app.use(bodyParser.json())
 app.use(morgan('short'))
 
 // Get all the users defined
-app.get('/', function (req, res) {
-  models.User.findAll()
-    .then((users) => {
-      res.json(users)
-    })
-})
+// app.get('/', function (req, res) {
+  // models.User.findAll()
+    // .then((users) => {
+      // res.json(users)
+    // })
+// })
 
+process.env.ENABLE_METRICS
 // Add a new user to the database
-app.post('/', function(req, res) {
-  models.User.create({
-    username: req.body.username
-  })
-    .then(() => {
-      res.send('User added !')
-    })
-})
+// app.post('/', function(req, res) {
+  // models.User.create({
+    // username: req.body.username
+  // })
+    // .then(() => {
+      // res.send('User added !')
+    // })
+// })
 
 // Synchronize models
-models.sequelize.sync().then(function() {
+// models.sequelize.sync().then(function() {
   /**
    * Listen on provided port, on all network interfaces.
    * 
@@ -40,4 +41,4 @@ models.sequelize.sync().then(function() {
   app.listen(3000, function() {
     console.log('Express server listening on port 3000');
   });
-});
+// });
